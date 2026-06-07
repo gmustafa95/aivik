@@ -59,16 +59,35 @@
     }
 
     .logo {
-      font-size: clamp(4rem, 14vw, 8rem);
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      background: linear-gradient(135deg, #a78bfa 0%, #818cf8 40%, #38bdf8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.12em;
       margin-bottom: 1.5rem;
       animation: fadeUp 0.9s ease both;
+      line-height: 1;
+    }
+
+    .logo-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(2.8rem, 10vw, 6rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      background: linear-gradient(135deg, #6366f1 0%, #818cf8 55%, #38bdf8 100%);
+      border-radius: 0.22em;
+      padding: 0.08em 0.22em;
+      line-height: 1.2;
+      box-shadow: 0 0 32px rgba(99, 102, 241, 0.35), 0 0 8px rgba(56, 189, 248, 0.2);
+    }
+
+    .logo-text {
+      font-size: clamp(2.8rem, 10vw, 6rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: #e8e8f0;
+      line-height: 1.2;
     }
 
     .divider {
@@ -138,7 +157,9 @@
 </head>
 <body>
   <div class="container">
-    <h1 class="logo">AIVIK</h1>
+    <h1 class="logo">
+      <span class="logo-badge">ai</span><span class="logo-text">vik</span>
+    </h1>
     <div class="divider"></div>
     <p class="tagline">Something remarkable is on its way.<br />We are crafting the experience - stay tuned.</p>
     <div class="badge">
