@@ -153,9 +153,94 @@
       letter-spacing: 0.06em;
       z-index: 1;
     }
+
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed;
+      top: 1.25rem;
+      right: 1.5rem;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .toggle-track {
+      width: 44px;
+      height: 24px;
+      background: rgba(129, 140, 248, 0.15);
+      border: 1px solid rgba(129, 140, 248, 0.3);
+      border-radius: 100px;
+      position: relative;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .toggle-thumb {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #818cf8;
+      transition: transform 0.3s, background 0.3s;
+      box-shadow: 0 0 6px rgba(129, 140, 248, 0.5);
+    }
+
+    .toggle-icon {
+      font-size: 1rem;
+      line-height: 1;
+      user-select: none;
+    }
+
+    /* Light mode */
+    body.light {
+      background: #f0f2ff;
+      color: #1a1a2e;
+    }
+
+    body.light::before {
+      background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+    }
+
+    body.light::after {
+      background: radial-gradient(ellipse at center, rgba(168, 85, 247, 0.06) 0%, transparent 70%);
+    }
+
+    body.light .logo-text {
+      color: #1a1a2e;
+    }
+
+    body.light .tagline {
+      color: #475569;
+    }
+
+    body.light footer {
+      color: #94a3b8;
+    }
+
+    body.light .toggle-track {
+      background: rgba(99, 102, 241, 0.12);
+      border-color: rgba(99, 102, 241, 0.3);
+    }
+
+    body.light .toggle-thumb {
+      transform: translateX(20px);
+      background: #6366f1;
+      box-shadow: 0 0 6px rgba(99, 102, 241, 0.5);
+    }
   </style>
 </head>
 <body>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+    <span class="toggle-icon">☀️</span>
+    <span class="toggle-track"><span class="toggle-thumb"></span></span>
+    <span class="toggle-icon">🌙</span>
+  </button>
   <div class="container">
     <h1 class="logo">
       <span class="logo-badge">ai</span><span class="logo-text">vik</span>
@@ -167,6 +252,16 @@
       Under Development
     </div>
   </div>
-  <footer>&copy; 2025 AIVIK. All rights reserved.</footer>
+  <footer>&copy; 2026 AIVIK. All rights reserved.</footer>
+  <script>
+    const toggle = document.getElementById('themeToggle');
+    if (localStorage.getItem('theme') === 'light') {
+      document.body.classList.add('light');
+    }
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+    });
+  </script>
 </body>
 </html>
